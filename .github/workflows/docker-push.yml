@@ -31,3 +31,9 @@ jobs:
           tags: | 
             ${{ secrets.DOCKERHUB_USERNAME }}/devcalc-api:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/devcalc-api:${{ github.sha }}
+
+      - name: upload jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-build
+          path: target/*.jar
