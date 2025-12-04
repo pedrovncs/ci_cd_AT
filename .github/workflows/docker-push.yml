@@ -32,16 +32,12 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/devcalc-api:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/devcalc-api:${{ github.sha }}
 
-      - name: gerar relatorio actions
-        run: |            
-            echo "## relatorio de execução" >> $GITHUB_STEP_SUMMARY
-            echo "| item | info |" >> $GITHUB_STEP_SUMMARY
-            echo "|---|---|" >> $GITHUB_STEP_SUMMARY
-            echo "| docker image | ${{ secrets.DOCKERHUB_USERNAME}}/devcalc-api` |" >> $GITHUB_STEP_SUMMARY
-            echo "| tag| \`${{ github.sha }}` |" >> $GITHUB_STEP_SUMMARY
-            echo "| data| date +'%d/%m/%Y %H:%M:%S' |" >> $GITHUB_STEP_SUMMARY
-            echo "| autor| ${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
-            echo "| branch| ${{ github.ref_name }} |" >> $GITHUB_STEP_SUMMARY
-          
-          
-          
+      - name: relatorio github actions
+        run: |
+          echo "## relatorio de execução" >> $GITHUB_STEP_SUMMARY
+          echo "| item | info |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| data| '$(date +'%d/%m/%Y %H:%M:%S')' |" >> $GITHUB_STEP_SUMMARY
+          echo "| autor| ${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| tag| ${{ github.sha }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| branch| ${{ github.ref_name }} |" >> $GITHUB_STEP_SUMMARY
