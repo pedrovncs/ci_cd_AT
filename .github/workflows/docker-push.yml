@@ -32,8 +32,16 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/devcalc-api:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/devcalc-api:${{ github.sha }}
 
-      - name: upload jar
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-build
-          path: target/*.jar
+      - name: gerar relatorio actions
+        run: |            
+            echo "## relatorio de execução" >> $GITHUB_STEP_SUMMARY
+            echo "| item | info |" >> $GITHUB_STEP_SUMMARY
+            echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+            echo "| docker image | ${{ secrets.DOCKERHUB_USERNAME}}/devcalc-api` |" >> $GITHUB_STEP_SUMMARY
+            echo "| tag| \`${{ github.sha }}` |" >> $GITHUB_STEP_SUMMARY
+            echo "| data| date +'%d/%m/%Y %H:%M:%S' |" >> $GITHUB_STEP_SUMMARY
+            echo "| autor| ${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
+            echo "| branch| ${{ github.ref_name }} |" >> $GITHUB_STEP_SUMMARY
+          
+          
+          
