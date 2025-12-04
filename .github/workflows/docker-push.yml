@@ -29,5 +29,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: | 
-            ${{ secrets.DOCKERHUB_USERNAME }}/devcalc_api:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/devcalc_api:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/devcalc-api:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/devcalc-api:${{ github.sha }}
